@@ -1,0 +1,54 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /avaliacao
+  error:
+    include-message: always
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:oracle:thin:@localhost:1521:xe}
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: ${SPRING_DATASOURCE_USERNAME:avaliacao}
+    password: ${SPRING_DATASOURCE_PASSWORD:avaliacao}
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+    properties:
+      org:
+        hibernate:
+          envers:
+            audit_table_prefix: APP_AUD_
+            audit_table_suffix:
+      hibernate:
+        format_sql: true
+        generate_statistics: false
+        use_sql_comments: true
+  sql:
+    init:
+      encoding: UTF-8
+      mode: always
+logging:
+  level:
+    com:
+      example: ${LOGGING_LEVEL:DEBUG}
+    org:
+      hibernate:
+        SQL: ${LOGGING_LEVEL:DEBUG}
+        type:
+          descriptor:
+            sql: TRACE
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: ${LOGGING_LEVEL:DEBUG}
+management:
+  server:
+    port: 8080
+  endpoints:
+    web:
+      exposure:
+        include: "health,info"
