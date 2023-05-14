@@ -9,9 +9,23 @@ import org.xhtmlrenderer.pdf.ITextRenderer;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
+/**
+ * Serviço para a conversão de HTML em PDF
+ *
+ * @version 1.0
+ * @since 13/05/2023
+ * @author Matheus Leal
+ * @link https://github.com/matheuslealpa/sb-html-to-pdf
+ */
 @Service
 public class HtmlToPdfConverterService {
 
+    /**
+     * Converte o conteúdo HTML fornecido em um arquivo PDF
+     *
+     * @param htmlBytes o conteúdo HTML a ser convertido em um arquivo PDF, codificado em base64
+     * @return o conteúdo do arquivo PDF resultante, codificado em base64
+     */
     public byte[] exec(byte[] htmlBytes) {
         try {
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(htmlBytes);
