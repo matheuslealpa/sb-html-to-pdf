@@ -3,6 +3,11 @@
 
 Este é um laboratório simples para converter um arquivo HTML em um arquivo PDF e armazenar o resultado em uma base de dados OracleXE.
 
+O projeto utiliza as seguintes dependências:
+
+- Flying Saucer PDF (OpenPDF) 9.1.20
+- Jsoup 1.15.3
+
 ## Pré-requisitos
 
 Antes de começar, você precisará ter instalado em sua máquina:
