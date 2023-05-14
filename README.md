@@ -33,8 +33,6 @@ O serviço será iniciado na porta 8080.
 
 ## API
 
-O serviço tem apenas uma API:
-
 ### POST /html-to-pdf/api/documento
 
 Converte o conteúdo HTML fornecido em um arquivo PDF e armazena o resultado em uma base de dados OracleXE.
