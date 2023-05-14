@@ -10,7 +10,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 @Service
-public class HTMLToPDF {
+public class HtmlToPdfConverterService {
 
     public byte[] exec(byte[] htmlBytes) {
         try {

@@ -16,16 +16,16 @@ alter system set filesystemio_options=directio scope=spfile;
 alter system set disk_asynch_io=false scope=spfile;
 
 --**********************************
---Esquema avaliacao
+--Esquema htmltopdf
 --**********************************
 
-create tablespace avaliacao datafile '/u01/app/oracle/oradata/XE/avaliacao01.dbf' size 100M online;
-create tablespace idx_avaliacao datafile '/u01/app/oracle/oradata/XE/idx_avaliacao01.dbf' size 100M;
-create user avaliacao identified by avaliacao default tablespace avaliacao temporary tablespace temp;
-grant resource to avaliacao;
-grant connect to avaliacao;
-grant create view to avaliacao;
-grant create procedure to avaliacao;
-grant create materialized view to avaliacao;
-alter user avaliacao default role connect, resource;
+create tablespace htmltopdf datafile '/u01/app/oracle/oradata/XE/htmltopdf01.dbf' size 100M online;
+create tablespace idx_htmltopdf datafile '/u01/app/oracle/oradata/XE/idx_htmltopdf01.dbf' size 100M;
+create user htmltopdf identified by htmltopdf default tablespace htmltopdf temporary tablespace temp;
+grant resource to htmltopdf;
+grant connect to htmltopdf;
+grant create view to htmltopdf;
+grant create procedure to htmltopdf;
+grant create materialized view to htmltopdf;
+alter user htmltopdf default role connect, resource;
 exit;
