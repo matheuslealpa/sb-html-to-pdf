@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -24,7 +25,7 @@ public class DocumentoRest {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Documento> insert(@RequestBody Documento resource){
-        if (resource.getDocumentPDF() !=null){
+        if (Objects.nonNull(resource.getDocumentPDF())){
             resource.setDocumentPDF(htmlToPDF.exec(resource.getDocumentPDF()));
         }
         return ResponseEntity.ok(documentoRepository.save(resource));
@@ -47,7 +48,7 @@ public class DocumentoRest {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Documento> update(@PathVariable Long id, @RequestBody Documento resource){
         if (!documentoRepository.existsById(id)) throw new EntityNotFoundException("entidade não encontrada");
-        if (resource.getDocumentPDF() !=null){
+        if (Objects.nonNull(resource.getDocumentPDF())){
             resource.setDocumentPDF(htmlToPDF.exec(resource.getDocumentPDF()));
         }
         return ResponseEntity.ok(documentoRepository.save(resource));

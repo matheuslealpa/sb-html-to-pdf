@@ -1,5 +1,7 @@
 package com.example.sbhtmltopdf.app.service;
 
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ import java.io.ByteArrayOutputStream;
  * @link https://github.com/matheuslealpa/sb-html-to-pdf
  */
 @Service
+@Slf4j
 public class HtmlToPdfConverterService {
 
     /**
@@ -26,8 +29,9 @@ public class HtmlToPdfConverterService {
      * @param htmlBytes o conteúdo HTML a ser convertido em um arquivo PDF, codificado em base64
      * @return o conteúdo do arquivo PDF resultante, codificado em base64
      */
+    @SneakyThrows
     public byte[] exec(byte[] htmlBytes) {
-        try {
+        log.info("Inicializando service que converte html em pdf");
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(htmlBytes);
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
@@ -40,12 +44,7 @@ public class HtmlToPdfConverterService {
 
             renderer.setDocumentFromString(document.html());
             renderer.layout();
-
             renderer.createPDF(byteArrayOutputStream);
             return byteArrayOutputStream.toByteArray();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
